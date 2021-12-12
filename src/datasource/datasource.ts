@@ -1,19 +1,25 @@
-import {
-  DataQueryRequest,
-  DataQueryResponse,
-  DataSourceApi,
-  DataSourceInstanceSettings,
-  FieldType,
-  MutableDataFrame,
-} from '@grafana/data';
+import { DataQueryRequest, DataQueryResponse, DataSourceApi, DataSourceInstanceSettings } from '@grafana/data';
+import { Api } from '../api';
+import { DataSourceTestStatus } from '../constants';
 import { DataSourceOptions, Query } from '../types';
 
 /**
  * Datasource
  */
 export class DataSource extends DataSourceApi<Query, DataSourceOptions> {
+  /**
+   * Api
+   *
+   * @type {Api} api
+   */
+  api: Api;
+
+  /**
+   * Constructor
+   */
   constructor(instanceSettings: DataSourceInstanceSettings<DataSourceOptions>) {
     super(instanceSettings);
+    this.api = new Api(instanceSettings);
   }
 
   /**
@@ -21,22 +27,15 @@ export class DataSource extends DataSourceApi<Query, DataSourceOptions> {
    */
   async query(options: DataQueryRequest<Query>): Promise<DataQueryResponse> {
     const { range } = options;
-    const from = range!.from.valueOf();
-    const to = range!.to.valueOf();
 
     /**
-     * Return a constant for each query.
+     * Process targets
      */
-    const data = options.targets.map((target) => {
-      return new MutableDataFrame({
-        refId: target.refId,
-        fields: [
-          { name: 'Time', values: [from, to], type: FieldType.time },
-          { name: 'Value', values: [target.constant, target.constant], type: FieldType.number },
-        ],
-      });
-    });
+    const data = options.targets.map((target) => this.api.getData(target, range));
 
+    /**
+     * Return data
+     */
     return { data };
   }
 
@@ -44,9 +43,14 @@ export class DataSource extends DataSourceApi<Query, DataSourceOptions> {
    * Health Check
    */
   async testDatasource() {
+    const isStatusOk = true;
+
+    /**
+     * Return
+     */
     return {
-      status: 'success',
-      message: 'Success',
+      status: isStatusOk ? DataSourceTestStatus.SUCCESS : DataSourceTestStatus.ERROR,
+      message: isStatusOk ? `Connected...` : "Error. Can't connect.",
     };
   }
 }
