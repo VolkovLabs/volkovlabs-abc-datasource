@@ -1,36 +1,32 @@
 {
   "$schema": "https://raw.githubusercontent.com/grafana/grafana/master/docs/sources/developers/plugins/plugin.schema.json",
-  "type": "datasource",
-  "name": "abc-datasource",
+  "dependencies": {
+    "grafanaDependency": ">=8.0.0",
+    "plugins": []
+  },
   "id": "volkovlabs-abc-datasource",
-  "metrics": true,
   "info": {
-    "description": "Template to create a new @grafana data source plugin",
     "author": {
-      "name": false,
+      "name": "Volkov Labs",
       "url": "https://volkovlabs.com"
     },
-    "keywords": [],
-    "logos": {
-      "small": "img/logo.svg",
-      "large": "img/logo.svg"
-    },
+    "description": "Template to create a new Grafana datasource plugin",
+    "keywords": ["template"],
     "links": [
       {
         "name": "Website",
-        "url": "https://github.com/grafana/grafana-starter-datasource"
-      },
-      {
-        "name": "License",
-        "url": "https://github.com/grafana/grafana-starter-datasource/blob/master/LICENSE"
+        "url": "https://volkovlabs.com"
       }
     ],
+    "logos": {
+      "large": "img/logo.svg",
+      "small": "img/logo.svg"
+    },
     "screenshots": [],
-    "version": "%VERSION%",
-    "updated": "%TODAY%"
+    "updated": "%TODAY%",
+    "version": "%VERSION%"
   },
-  "dependencies": {
-    "grafanaDependency": ">=7.0.0",
-    "plugins": []
-  }
+  "metrics": true,
+  "name": "Abc",
+  "type": "datasource"
 }

@@ -1085,13 +1085,13 @@
   resolved "https://registry.yarnpkg.com/@grafana/aws-sdk/-/aws-sdk-0.0.3.tgz#bc632c6c77971a5474acbe45847420503679fc75"
   integrity sha512-V0PJLk+oU1C33knurXp8BkT5N2ctDu9b21zpK16vkJAs5aOiH/OaOhQ/IP9ipxYhB+b9PFjr8RXagV/8XJ8xwg==
 
-"@grafana/data@8.3.2":
-  version "8.3.2"
-  resolved "https://registry.yarnpkg.com/@grafana/data/-/data-8.3.2.tgz#97fb215ed025a30f5581579e16ef4219ac390cf2"
-  integrity sha512-Onn/Oh972HwbiduqBUVP1AnL3guyvim3t5k7kVINm0eArNE+3Zs8xeeu5W5RZNESrzQmxLTEBjIo+cUJmmRhtQ==
+"@grafana/data@8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@grafana/data/-/data-8.3.0.tgz#727353fac0d8b988576354940803b1f0a55b5ad9"
+  integrity sha512-o42ynqtDvPuJKrTSobkQ0AzNP3jaU1UvndW3DjmX3Ll8bEtfixsT3U8j3mv3Wh32ChhD/lq6oErOawDGuHO0/g==
   dependencies:
     "@braintree/sanitize-url" "5.0.2"
-    "@grafana/schema" "8.3.2"
+    "@grafana/schema" "8.3.0"
     "@types/d3-interpolate" "^1.4.0"
     d3-interpolate "1.4.0"
     date-fns "2.21.3"
@@ -1106,10 +1106,10 @@
     uplot "1.6.16"
     xss "1.0.6"
 
-"@grafana/e2e-selectors@8.3.2":
-  version "8.3.2"
-  resolved "https://registry.yarnpkg.com/@grafana/e2e-selectors/-/e2e-selectors-8.3.2.tgz#6ff26e6c9de722f591f832cc5e887e296bfcc48d"
-  integrity sha512-J+LMkkhAzCL9UfbClBd8lgj18Nn7pDu3zOcDQQ4NvjjJjF+cnl6jPodQfBT/rwivx234mFQb35EG+e3WKqXGtQ==
+"@grafana/e2e-selectors@8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@grafana/e2e-selectors/-/e2e-selectors-8.3.0.tgz#0ce5e78b7e3b59858cfc709016338af37a44eea9"
+  integrity sha512-W+SARHyogq0/s5Hnaw2u6ZC1VPL7XxMUt4yAkQmVi8Dbz0zjYhvgtNc9AOEBSgGMxplIn6rtAitLEnpieYqrEg==
   dependencies:
     "@grafana/tsconfig" "^1.0.0-rc1"
     execa "5.1.1"
@@ -1133,10 +1133,10 @@
     prettier "2.2.1"
     typescript "4.3.4"
 
-"@grafana/schema@8.3.2":
-  version "8.3.2"
-  resolved "https://registry.yarnpkg.com/@grafana/schema/-/schema-8.3.2.tgz#30a72804b405b3b3f50f835ae597c9a2d43cd6b1"
-  integrity sha512-gfdTsXK+VVnoVZAajGOzsl5wymUsuPURW80CLQdAWzhbHbf4kDB3WrGeHODqRWpTmI56GDqRZhgoFHGesW1ksQ==
+"@grafana/schema@8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@grafana/schema/-/schema-8.3.0.tgz#aa77f4e953c985735acde2ad8e8bf8183519fe92"
+  integrity sha512-JWM1/TFfqBlNgqC5nFKydGcZkUfvHZBpmd2gPPvuzLTggZ/sC4WMGqD/vhBcFhzZd2n7t0JFUTMAzqTTPDZPPg==
 
 "@grafana/slate-react@0.22.10-grafana":
   version "0.22.10-grafana"
@@ -1160,17 +1160,17 @@
     tiny-invariant "^1.0.1"
     tiny-warning "^0.0.3"
 
-"@grafana/toolkit@8.3.2":
-  version "8.3.2"
-  resolved "https://registry.yarnpkg.com/@grafana/toolkit/-/toolkit-8.3.2.tgz#e0741d0e57d65fa96367771b6093b9a4037050b8"
-  integrity sha512-xiDfAd1lIxJjP1kjlZCxnyvSi0b+oeJGgkcNza81xLaEoe4PF0bfO18HR1ZT17bDph/1O3PO8tTeYoIbeWOixQ==
+"@grafana/toolkit@8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@grafana/toolkit/-/toolkit-8.3.0.tgz#fb6bd45f671c9a75bbf6b810c4a8fd74ddd71686"
+  integrity sha512-ef/xgfAh1QPZMf9Q3m9yNYR+WZN/OhFqUvs+nv3ugKIZKZbDZ3H+CY7WIfUkM/DSTj94ZCdRsqBkHmRy34UogQ==
   dependencies:
     "@babel/core" "7.13.14"
     "@babel/preset-env" "7.13.12"
-    "@grafana/data" "8.3.2"
+    "@grafana/data" "8.3.0"
     "@grafana/eslint-config" "2.5.1"
     "@grafana/tsconfig" "^1.0.0-rc1"
-    "@grafana/ui" "8.3.2"
+    "@grafana/ui" "8.3.0"
     "@jest/core" "26.6.3"
     "@rushstack/eslint-patch" "1.0.6"
     "@types/command-exists" "^1.2.0"
@@ -1248,17 +1248,17 @@
   resolved "https://registry.yarnpkg.com/@grafana/tsconfig/-/tsconfig-1.0.0-rc1.tgz#d07ea16755a50cae21000113f30546b61647a200"
   integrity sha512-nucKPGyzlSKYSiJk5RA8GzMdVWhdYNdF+Hh65AXxjD9PlY69JKr5wANj8bVdQboag6dgg0BFKqgKPyY+YtV4Iw==
 
-"@grafana/ui@8.3.2":
-  version "8.3.2"
-  resolved "https://registry.yarnpkg.com/@grafana/ui/-/ui-8.3.2.tgz#4ae84890131c43d3fae2b90562b6b5ca8e70566e"
-  integrity sha512-NXcAvk+w/f2rTUl4xBHydFS4qaicOuN+VEIs9rojGk1UafiFfcaRQePd2eJ2jMGVbVuMKAgW8wRjgOPOonenJA==
+"@grafana/ui@8.3.0":
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/@grafana/ui/-/ui-8.3.0.tgz#c0c16c29ee2d6e802597a009d61dbd887374a14c"
+  integrity sha512-QL4cGazPNFceXNFx8g7zRqTl7b4PLzxOCEIJpuj/kbtmA6qe4OpRYzKTxwBxGRMT3RT9zmDEIiKc2gl2niiONA==
   dependencies:
     "@emotion/css" "11.1.3"
     "@emotion/react" "11.1.5"
     "@grafana/aws-sdk" "0.0.3"
-    "@grafana/data" "8.3.2"
-    "@grafana/e2e-selectors" "8.3.2"
-    "@grafana/schema" "8.3.2"
+    "@grafana/data" "8.3.0"
+    "@grafana/e2e-selectors" "8.3.0"
+    "@grafana/schema" "8.3.0"
     "@grafana/slate-react" "0.22.10-grafana"
     "@monaco-editor/react" "4.2.2"
     "@popperjs/core" "2.5.4"

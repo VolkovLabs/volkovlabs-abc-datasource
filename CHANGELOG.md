@@ -4,4 +4,4 @@
 
 ### Features / Enhancements
 
-- Initial release based on Grafana 8.3.2
+- Initial release based on Grafana 8.3.0
