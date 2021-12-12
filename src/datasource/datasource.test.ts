@@ -36,7 +36,7 @@ describe('DataSource', () => {
   });
 
   /**
-   * testDatasource
+   * Health Check
    */
   describe('testDatasource', () => {
     it('Should handle Success state', async () => {
