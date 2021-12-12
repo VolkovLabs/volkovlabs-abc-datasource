@@ -1,4 +1,3 @@
-import defaults from 'lodash/defaults';
 import {
   DataQueryRequest,
   DataQueryResponse,
@@ -7,26 +6,33 @@ import {
   FieldType,
   MutableDataFrame,
 } from '@grafana/data';
-import { defaultQuery, MyDataSourceOptions, MyQuery } from './types';
+import { DataSourceOptions, Query } from '../types';
 
-export class DataSource extends DataSourceApi<MyQuery, MyDataSourceOptions> {
-  constructor(instanceSettings: DataSourceInstanceSettings<MyDataSourceOptions>) {
+/**
+ * Datasource
+ */
+export class DataSource extends DataSourceApi<Query, DataSourceOptions> {
+  constructor(instanceSettings: DataSourceInstanceSettings<DataSourceOptions>) {
     super(instanceSettings);
   }
 
-  async query(options: DataQueryRequest<MyQuery>): Promise<DataQueryResponse> {
+  /**
+   * Query
+   */
+  async query(options: DataQueryRequest<Query>): Promise<DataQueryResponse> {
     const { range } = options;
     const from = range!.from.valueOf();
     const to = range!.to.valueOf();
 
-    // Return a constant for each query.
+    /**
+     * Return a constant for each query.
+     */
     const data = options.targets.map((target) => {
-      const query = defaults(target, defaultQuery);
       return new MutableDataFrame({
-        refId: query.refId,
+        refId: target.refId,
         fields: [
           { name: 'Time', values: [from, to], type: FieldType.time },
-          { name: 'Value', values: [query.constant, query.constant], type: FieldType.number },
+          { name: 'Value', values: [target.constant, target.constant], type: FieldType.number },
         ],
       });
     });
@@ -34,8 +40,10 @@ export class DataSource extends DataSourceApi<MyQuery, MyDataSourceOptions> {
     return { data };
   }
 
+  /**
+   * Health Check
+   */
   async testDatasource() {
-    // Implement a health check for your data source.
     return {
       status: 'success',
       message: 'Success',

@@ -1,14 +1,20 @@
 import React, { ChangeEvent, PureComponent } from 'react';
-import { LegacyForms } from '@grafana/ui';
 import { DataSourcePluginOptionsEditorProps } from '@grafana/data';
-import { MyDataSourceOptions, MySecureJsonData } from './types';
+import { LegacyForms } from '@grafana/ui';
+import { DataSourceOptions, SecureJsonData } from '../../types';
 
 const { SecretFormField, FormField } = LegacyForms;
 
-interface Props extends DataSourcePluginOptionsEditorProps<MyDataSourceOptions> {}
+interface Props extends DataSourcePluginOptionsEditorProps<DataSourceOptions> {}
 
+/**
+ * State
+ */
 interface State {}
 
+/**
+ * Config Editor
+ */
 export class ConfigEditor extends PureComponent<Props, State> {
   onPathChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { onOptionsChange, options } = this.props;
@@ -45,10 +51,13 @@ export class ConfigEditor extends PureComponent<Props, State> {
     });
   };
 
+  /**
+   * Render
+   */
   render() {
     const { options } = this.props;
     const { jsonData, secureJsonFields } = options;
-    const secureJsonData = (options.secureJsonData || {}) as MySecureJsonData;
+    const secureJsonData = (options.secureJsonData || {}) as SecureJsonData;
 
     return (
       <div className="gf-form-group">
