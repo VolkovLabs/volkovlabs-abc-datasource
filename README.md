@@ -1,8 +1,8 @@
 # Template to create a new Grafana datasource plugin
 
 [![Grafana 8](https://img.shields.io/badge/Grafana-8-orange)](https://www.grafana.com)
-![CI](https://github.com/volkovlabs/grafana-abc-datasource/workflows/CI/badge.svg)
-[![codecov](https://codecov.io/gh/VolkovLabs/grafana-abc-datasource/branch/main/graph/badge.svg?token=0m6f0ktUar)](https://codecov.io/gh/VolkovLabs/grafana-abc-datasource)
+![CI](https://github.com/volkovlabs/volkovlabs-abc-datasource/workflows/CI/badge.svg)
+[![codecov](https://codecov.io/gh/VolkovLabs/volkovlabs-abc-datasource/branch/main/graph/badge.svg?token=2W9VR0PG5N)](https://codecov.io/gh/VolkovLabs/volkovlabs-abc-datasource)
 
 ## Introduction
 
@@ -50,7 +50,7 @@ yarn run start
 
 We love to hear from users, developers, and the whole community interested in this plugin. These are various ways to get in touch with us:
 
-- Ask a question, request a new feature, and file a bug with [GitHub issues](https://github.com/volkovlabs/grafana-abc-datasource/issues/new/choose).
+- Ask a question, request a new feature, and file a bug with [GitHub issues](https://github.com/volkovlabs/volkovlabs-abc-datasource/issues/new/choose).
 - Star the repository to show your support.
 
 ## Contributing
@@ -61,4 +61,4 @@ We love to hear from users, developers, and the whole community interested in th
 
 ## License
 
-- Apache License Version 2.0, see [LICENSE](https://github.com/volkovlabs/grafana-abc-datasource/blob/main/LICENSE).
+- Apache License Version 2.0, see [LICENSE](https://github.com/volkovlabs/volkovlabs-abc-datasource/blob/main/LICENSE).

@@ -10,13 +10,6 @@ export interface Query extends DataQuery {
    * @type {string}
    */
   queryText?: string;
-
-  /**
-   * Constant
-   *
-   * @type {number}
-   */
-  constant: number;
 }
 
 /**
