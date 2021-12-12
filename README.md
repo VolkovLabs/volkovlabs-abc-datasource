@@ -1,42 +1,64 @@
-# Grafana Data Source Plugin Template
+# Template to create a new Grafana datasource plugin
 
-[![Build](https://github.com/grafana/grafana-starter-datasource/workflows/CI/badge.svg)](https://github.com/grafana/grafana-starter-datasource/actions?query=workflow%3A%22CI%22)
+[![Grafana 8](https://img.shields.io/badge/Grafana-8-orange)](https://www.grafana.com)
+![CI](https://github.com/volkovlabs/grafana-abc-datasource/workflows/CI/badge.svg)
+[![codecov](https://codecov.io/gh/VolkovLabs/grafana-abc-datasource/branch/main/graph/badge.svg?token=0m6f0ktUar)](https://codecov.io/gh/VolkovLabs/grafana-abc-datasource)
 
-This template is a starting point for building Grafana Data Source Plugins
+## Introduction
 
-## What is Grafana Data Source Plugin?
+The ABC Datasource is a template to create a new datasource plugin for Grafana.
 
-Grafana supports a wide range of data sources, including Prometheus, MySQL, and even Datadog. There’s a good chance you can already visualize metrics from the systems you have set up. In some cases, though, you already have an in-house metrics solution that you’d like to add to your Grafana dashboards. Grafana Data Source Plugins enables integrating such solutions with Grafana.
+### Requirements
 
-## Getting started
+Grafana 8.0 is required.
 
-1. Install dependencies
+## Getting Started
 
-   ```bash
-   yarn install
-   ```
+1. Install packages
 
-2. Build plugin in development mode or run in watch mode
+```bash
+yarn install
+```
 
-   ```bash
-   yarn dev
-   ```
+2. Build the plugin
 
-   or
+```bash
+yarn build
+```
 
-   ```bash
-   yarn watch
-   ```
+3. Sign the plugins
 
-3. Build plugin in production mode
+```
+export GRAFANA_API_KEY=erXXXX==
+yarn sign
+```
 
-   ```bash
-   yarn build
-   ```
+4. Start Docker container
 
-## Learn more
+```bash
+yarn run start
+```
 
-- [Build a data source plugin tutorial](https://grafana.com/tutorials/build-a-data-source-plugin)
-- [Grafana documentation](https://grafana.com/docs/)
-- [Grafana Tutorials](https://grafana.com/tutorials/) - Grafana Tutorials are step-by-step guides that help you make the most of Grafana
-- [Grafana UI Library](https://developers.grafana.com/ui) - UI components to help you build interfaces using Grafana Design System
+## Features
+
+- Use `docker-compose` to start development environment with provisioned panels and dashboard.
+- Provides unit test configuration.
+- Based on the latest version of Grafana.
+- Includes GitHub Actions for CI and Release.
+
+## Feedback
+
+We love to hear from users, developers, and the whole community interested in this plugin. These are various ways to get in touch with us:
+
+- Ask a question, request a new feature, and file a bug with [GitHub issues](https://github.com/volkovlabs/grafana-abc-datasource/issues/new/choose).
+- Star the repository to show your support.
+
+## Contributing
+
+- Fork the repository.
+- Find an issue to work on and submit a pull request.
+- Could not find an issue? Look for documentation, bugs, typos, and missing features.
+
+## License
+
+- Apache License Version 2.0, see [LICENSE](https://github.com/volkovlabs/grafana-abc-datasource/blob/main/LICENSE).

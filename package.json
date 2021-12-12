@@ -1,26 +1,29 @@
 {
-  "name": "volkovlabs-abc-datasource",
-  "version": "1.0.0",
-  "description": "Template to create a new @grafana data source plugin",
-  "scripts": {
-    "build": "grafana-toolkit plugin:build",
-    "test": "grafana-toolkit plugin:test",
-    "dev": "grafana-toolkit plugin:dev",
-    "watch": "grafana-toolkit plugin:dev --watch",
-    "sign": "grafana-toolkit plugin:sign",
-    "start": "yarn watch"
-  },
-  "author": false,
-  "license": "Apache-2.0",
+  "author": "Volkov Labs",
+  "description": "Abc datasource",
   "devDependencies": {
-    "@grafana/data": "latest",
-    "@grafana/toolkit": "latest",
-    "@grafana/ui": "latest",
-    "@types/lodash": "latest",
-    "@testing-library/jest-dom": "5.4.0",
-    "@testing-library/react": "^10.0.2"
+    "@grafana/data": "8.3.2",
+    "@grafana/toolkit": "8.3.2",
+    "@grafana/ui": "8.3.2",
+    "@types/enzyme": "^3.10.10",
+    "@types/enzyme-adapter-react-16": "^1.0.6",
+    "enzyme": "^3.11.0",
+    "enzyme-adapter-react-16": "^1.15.6"
   },
   "engines": {
     "node": ">=14"
-  }
+  },
+  "name": "volkovlabs-abc-datasource",
+  "scripts": {
+    "build": "grafana-toolkit plugin:build --coverage",
+    "dev": "grafana-toolkit plugin:dev",
+    "format": "prettier --write \"**\"",
+    "sign": "grafana-toolkit plugin:sign --rootUrls http://localhost:3000/",
+    "start": "docker-compose pull && docker-compose up",
+    "stop": "docker-compose down",
+    "test": "grafana-toolkit plugin:test",
+    "upgrade": "yarn upgrade --latest",
+    "watch": "grafana-toolkit plugin:dev --watch"
+  },
+  "version": "1.0.0"
 }
