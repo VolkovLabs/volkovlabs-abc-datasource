@@ -1,6 +1,6 @@
 {
   "author": "Volkov Labs",
-  "description": "Abc datasource",
+  "description": "Template for a new Grafana datasource plugin",
   "devDependencies": {
     "@grafana/data": "8.3.0",
     "@grafana/toolkit": "8.3.0",
