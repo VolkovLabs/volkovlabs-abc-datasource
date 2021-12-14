@@ -13,7 +13,7 @@ type ShallowComponent = ShallowWrapper<QueryEditor['props'], QueryEditor['state'
  *
  * @param overrideQuery
  */
-export const getQuery = (overrideQuery: object = {}): Query => ({
+export const getQuery = (overrideQuery = {}): Query => ({
   queryText: defaultQuery.queryText,
   refId: 'A',
   ...overrideQuery,

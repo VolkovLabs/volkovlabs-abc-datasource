@@ -6,7 +6,7 @@ import { DataSource } from '../../datasource';
 import { DataSourceOptions, defaultQuery, Query } from '../../types';
 
 /**
- * Editor Property
+ * Editor Properties
  */
 type Props = QueryEditorProps<DataSource, Query, DataSourceOptions>;
 
