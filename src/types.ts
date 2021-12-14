@@ -13,6 +13,13 @@ export interface Query extends DataQuery {
 }
 
 /**
+ * Defaults for Query
+ */
+export const defaultQuery: Partial<Query> = {
+  queryText: 'test',
+};
+
+/**
  * Datasource Options
  */
 export interface DataSourceOptions extends DataSourceJsonData {

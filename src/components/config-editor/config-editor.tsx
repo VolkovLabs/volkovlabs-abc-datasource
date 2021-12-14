@@ -1,10 +1,11 @@
 import React, { ChangeEvent, PureComponent } from 'react';
 import { DataSourcePluginOptionsEditorProps } from '@grafana/data';
-import { LegacyForms } from '@grafana/ui';
+import { InlineField, InlineFieldRow, Input, LegacyForms } from '@grafana/ui';
 import { DataSourceOptions, SecureJsonData } from '../../types';
 
-const { SecretFormField, FormField } = LegacyForms;
-
+/**
+ * Editor Properties
+ */
 interface Props extends DataSourcePluginOptionsEditorProps<DataSourceOptions> {}
 
 /**
@@ -16,16 +17,24 @@ interface State {}
  * Config Editor
  */
 export class ConfigEditor extends PureComponent<Props, State> {
+  /**
+   * Path Change
+   */
   onPathChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { onOptionsChange, options } = this.props;
-    const jsonData = {
-      ...options.jsonData,
-      path: event.target.value,
-    };
-    onOptionsChange({ ...options, jsonData });
+    onOptionsChange({
+      ...options,
+      jsonData: {
+        ...options.jsonData,
+        path: event.target.value,
+      },
+    });
   };
 
-  // Secure field (only sent to the backend)
+  /**
+   * API Key Change
+   * Secure fields only sent to the backend
+   */
   onAPIKeyChange = (event: ChangeEvent<HTMLInputElement>) => {
     const { onOptionsChange, options } = this.props;
     onOptionsChange({
@@ -36,6 +45,9 @@ export class ConfigEditor extends PureComponent<Props, State> {
     });
   };
 
+  /**
+   * API Key Reset
+   */
   onResetAPIKey = () => {
     const { onOptionsChange, options } = this.props;
     onOptionsChange({
@@ -60,33 +72,25 @@ export class ConfigEditor extends PureComponent<Props, State> {
     const secureJsonData = (options.secureJsonData || {}) as SecureJsonData;
 
     return (
-      <div className="gf-form-group">
-        <div className="gf-form">
-          <FormField
-            label="Path"
-            labelWidth={6}
-            inputWidth={20}
-            onChange={this.onPathChange}
-            value={jsonData.path || ''}
-            placeholder="json field returned to frontend"
-          />
-        </div>
+      <>
+        <InlineFieldRow>
+          <InlineField label="Path" labelWidth={14}>
+            <Input type="text" value={jsonData.path} width={40} onChange={this.onPathChange} />
+          </InlineField>
+        </InlineFieldRow>
 
-        <div className="gf-form-inline">
-          <div className="gf-form">
-            <SecretFormField
-              isConfigured={(secureJsonFields && secureJsonFields.apiKey) as boolean}
-              value={secureJsonData.apiKey || ''}
-              label="API Key"
-              placeholder="secure json field (backend only)"
-              labelWidth={6}
-              inputWidth={20}
-              onReset={this.onResetAPIKey}
-              onChange={this.onAPIKeyChange}
-            />
-          </div>
-        </div>
-      </div>
+        <InlineFieldRow>
+          <LegacyForms.SecretFormField
+            isConfigured={(secureJsonFields && secureJsonFields.apiKey) as boolean}
+            value={secureJsonData.apiKey || ''}
+            label="API Key"
+            labelWidth={7}
+            inputWidth={20}
+            onReset={this.onResetAPIKey}
+            onChange={this.onAPIKeyChange}
+          />
+        </InlineFieldRow>
+      </>
     );
   }
 }
