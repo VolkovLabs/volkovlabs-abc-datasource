@@ -1,10 +1,11 @@
 # Change Log
 
-## 1.2.0 (IN PROGRESS)
+## 1.2.0 (2022-02-17)
 
 ### Features / Enhancements
 
-- Rebuild using 8.3.6
+- Rebuild using 8.3.6 (#8)
+- Rebuild using 8.4.0 and use PluginCheck v2 (#9)
 
 ## 1.1.0 (2022-01-18)
 
