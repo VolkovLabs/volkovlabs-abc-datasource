@@ -1,6 +1,6 @@
 import React, { ChangeEvent, PureComponent } from 'react';
 import { DataSourcePluginOptionsEditorProps } from '@grafana/data';
-import { InlineField, InlineFieldRow, Input, LegacyForms } from '@grafana/ui';
+import { FieldSet, InlineField, InlineFieldRow, Input, LegacyForms } from '@grafana/ui';
 import { DataSourceOptions, SecureJsonData } from '../../types';
 
 /**
@@ -72,7 +72,7 @@ export class ConfigEditor extends PureComponent<Props, State> {
     const secureJsonData = (options.secureJsonData || {}) as SecureJsonData;
 
     return (
-      <>
+      <FieldSet>
         <InlineFieldRow>
           <InlineField label="Path" labelWidth={14}>
             <Input type="text" value={jsonData.path} width={40} onChange={this.onPathChange} />
@@ -90,7 +90,7 @@ export class ConfigEditor extends PureComponent<Props, State> {
             onChange={this.onAPIKeyChange}
           />
         </InlineFieldRow>
-      </>
+      </FieldSet>
     );
   }
 }
