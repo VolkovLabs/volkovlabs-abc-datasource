@@ -1,40 +1,12 @@
 {
-  "__inputs": [
-    {
-      "name": "DS_ABC",
-      "label": "Abc",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "volkovlabs-abc-datasource",
-      "pluginName": "Abc"
-    }
-  ],
-  "__elements": [],
-  "__requires": [
-    {
-      "type": "grafana",
-      "id": "grafana",
-      "name": "Grafana",
-      "version": "8.3.2"
-    },
-    {
-      "type": "panel",
-      "id": "table",
-      "name": "Table",
-      "version": ""
-    },
-    {
-      "type": "datasource",
-      "id": "volkovlabs-abc-datasource",
-      "name": "Abc",
-      "version": "1.0.0"
-    }
-  ],
   "annotations": {
     "list": [
       {
         "builtIn": 1,
-        "datasource": "-- Grafana --",
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
         "enable": true,
         "hide": true,
         "iconColor": "rgba(0, 211, 255, 1)",
@@ -52,11 +24,15 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": null,
+  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
     {
+      "datasource": {
+        "type": "volkovlabs-abc-datasource",
+        "uid": "P06D90109C8CCE34E"
+      },
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -64,7 +40,8 @@
           },
           "custom": {
             "align": "auto",
-            "displayMode": "auto"
+            "displayMode": "auto",
+            "inspect": false
           },
           "mappings": [],
           "thresholds": {
@@ -98,12 +75,12 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "8.3.2",
+      "pluginVersion": "8.5.1",
       "targets": [
         {
           "datasource": {
             "type": "volkovlabs-abc-datasource",
-            "uid": "${DS_ABC}"
+            "uid": "P06D90109C8CCE34E"
           },
           "queryText": "test",
           "refId": "A"
@@ -114,7 +91,7 @@
     }
   ],
   "refresh": "",
-  "schemaVersion": 33,
+  "schemaVersion": 36,
   "style": "dark",
   "tags": [],
   "templating": {
