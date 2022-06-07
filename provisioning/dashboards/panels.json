@@ -24,7 +24,6 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 1,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -75,7 +74,7 @@
         },
         "showHeader": true
       },
-      "pluginVersion": "8.5.1",
+      "pluginVersion": "9.0.0-beta3",
       "targets": [
         {
           "datasource": {
