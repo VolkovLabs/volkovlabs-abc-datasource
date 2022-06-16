@@ -1,11 +1,12 @@
 # Change Log
 
-## 2.0.0 (IN PROGRESS)
+## 2.0.0 (2022-06-16)
 
 ### Features / Enhancements
 
 - Rebuild using 9.0.0-beta3 (#12)
 - Update Requirements to Grafana 8.5.0 (#14)
+- Rebuild using 9.0.0 (#15)
 
 ## 1.3.0 (2022-05-01)
 

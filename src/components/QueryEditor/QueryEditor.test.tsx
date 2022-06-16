@@ -1,6 +1,7 @@
 import { shallow, ShallowWrapper } from 'enzyme';
 import React from 'react';
-import { defaultQuery, Query } from '../../types';
+import { defaultQuery } from '../../constants';
+import { Query } from '../../types';
 import { QueryEditor } from './QueryEditor';
 
 /**
