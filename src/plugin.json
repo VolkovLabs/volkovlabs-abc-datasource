@@ -10,19 +10,28 @@
       "name": "Volkov Labs",
       "url": "https://volkovlabs.io"
     },
-    "description": "Template to create a new Grafana datasource plugin",
+    "description": "Template to create a new Grafana data source plugin",
     "keywords": ["template"],
     "links": [
       {
-        "name": "Website",
-        "url": "https://volkovlabs.io"
+        "name": "Documentation",
+        "url": "https://docs.volkovlabs.io"
+      },
+      {
+        "name": "GitHub",
+        "url": "https://github.com/volkovlabs/volkovlabs-abc-datasource"
       }
     ],
     "logos": {
       "large": "img/logo.svg",
       "small": "img/logo.svg"
     },
-    "screenshots": [],
+    "screenshots": [
+      {
+        "name": "Data source",
+        "path": "img/datasource.png"
+      }
+    ],
     "updated": "%TODAY%",
     "version": "%VERSION%"
   },

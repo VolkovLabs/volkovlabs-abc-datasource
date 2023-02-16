@@ -6,6 +6,7 @@
 
 - Update workflows (#18)
 - Rebuild using 9.3.6 (#19)
+- Add Data source image (#20)
 
 ## 2.1.0 (2022-09-22)
 
