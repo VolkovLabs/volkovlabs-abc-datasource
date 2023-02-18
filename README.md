@@ -7,6 +7,8 @@
 [![codecov](https://codecov.io/gh/VolkovLabs/volkovlabs-abc-datasource/branch/main/graph/badge.svg?token=2W9VR0PG5N)](https://codecov.io/gh/VolkovLabs/volkovlabs-abc-datasource)
 [![CodeQL](https://github.com/VolkovLabs/volkovlabs-abc-datasource/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/VolkovLabs/volkovlabs-abc-datasource/actions/workflows/codeql-analysis.yml)
 
+## Introduction
+
 The Abc Data Source is a template we created to streamline our development process and gladly share with the Grafana community.
 
 We created many Grafana data sources to this moment. To make the creation process efficient, starting with a well-constructed template is always easier.
