@@ -1,13 +1,9 @@
-import { shallow, ShallowWrapper } from 'enzyme';
 import React from 'react';
 import { DataSourceSettings } from '@grafana/data';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { TestIds } from '../../constants';
 import { DataSourceOptions } from '../../types';
 import { ConfigEditor } from './ConfigEditor';
-
-/**
- * Component
- */
-type ShallowComponent = ShallowWrapper<ConfigEditor['props'], ConfigEditor['state'], ConfigEditor>;
 
 /**
  * Override Options
@@ -68,20 +64,22 @@ describe('ConfigEditor', () => {
    * Path
    */
   describe('Path', () => {
-    const getComponent = (wrapper: ShallowComponent) =>
-      wrapper.findWhere((node) => {
-        return node.prop('onChange') === wrapper.instance().onPathChange;
-      });
-
     it('Should apply path value and change options if field was changed', () => {
       const options = getOptions({ jsonData: { path: '/abc' } });
-      const wrapper = shallow<ConfigEditor>(<ConfigEditor options={options} onOptionsChange={onChange} />);
 
-      const testedComponent = getComponent(wrapper);
-      expect(testedComponent.prop('value')).toEqual(options.jsonData.path);
+      render(<ConfigEditor options={options} onOptionsChange={onChange} />);
 
+      /**
+       * Check component
+       */
+      expect(screen.getByTestId(TestIds.configEditor.fieldPath)).toHaveValue(options.jsonData.path);
+
+      /**
+       * Trigger change
+       */
       const newValue = '/123';
-      testedComponent.simulate('change', { target: { value: newValue } });
+      fireEvent.change(screen.getByTestId(TestIds.configEditor.fieldPath), { target: { value: newValue } });
+
       expect(onChange).toHaveBeenCalledWith({
         ...options,
         jsonData: {
@@ -96,27 +94,25 @@ describe('ConfigEditor', () => {
    * API Key
    */
   describe('APIKey', () => {
-    const label = 'API Key';
-
     it('Should apply APIKey value and change options if field was changed', () => {
       const options = getOptions({
-        secureJsonFields: { apiKey: true },
+        secureJsonFields: { apiKey: false },
         secureJsonData: { apiKey: '123' },
       });
-      const wrapper = shallow<ConfigEditor>(<ConfigEditor options={options} onOptionsChange={onChange} />);
+
+      render(<ConfigEditor options={options} onOptionsChange={onChange} />);
 
       /**
        * Check component
        */
-      const testedComponent = wrapper.findWhere((node) => node.prop('label') === label);
-      expect(testedComponent.prop('value')).toEqual(options.secureJsonData.apiKey);
-      expect(testedComponent.prop('isConfigured')).toBeTruthy();
+      expect(screen.getByTestId(TestIds.configEditor.fieldApiKey)).toHaveValue(options.secureJsonData.apiKey);
 
       /**
-       * Simulate OnChange
+       * Trigger change
        */
       const newValue = 'newKey';
-      testedComponent.simulate('change', { target: { value: newValue } });
+      fireEvent.change(screen.getByTestId(TestIds.configEditor.fieldApiKey), { target: { value: newValue } });
+
       expect(onChange).toHaveBeenCalledWith({
         ...options,
         secureJsonData: {
@@ -129,14 +125,13 @@ describe('ConfigEditor', () => {
     it('Should be Ok with not secureJsonData', () => {
       const options = getOptions();
       delete options.secureJsonData;
-      const wrapper = shallow<ConfigEditor>(<ConfigEditor options={options} onOptionsChange={onChange} />);
+
+      render(<ConfigEditor options={options} onOptionsChange={onChange} />);
 
       /**
        * Check component
        */
-      const testedComponent = wrapper.findWhere((node) => node.prop('label') === label);
-      expect(testedComponent.prop('value')).toEqual('');
-      expect(testedComponent.prop('isConfigured')).toBeFalsy();
+      expect(screen.getByTestId(TestIds.configEditor.fieldApiKey)).toHaveValue('');
     });
 
     it('Should reset APIKey', () => {
@@ -145,17 +140,20 @@ describe('ConfigEditor', () => {
         secureJsonData: {},
       });
 
+      render(<ConfigEditor options={options} onOptionsChange={onChange} />);
+
       /**
        * Check component
        */
-      const wrapper = shallow<ConfigEditor>(<ConfigEditor options={options} onOptionsChange={onChange} />);
-      const testedComponent = wrapper.findWhere((node) => node.prop('label') === label);
+      const resetButton = screen.getByRole('button');
+
+      expect(resetButton).toBeInTheDocument();
 
       /**
-       * Simulate OnChange
+       * Click reset button
        */
-      expect(testedComponent.prop('isConfigured')).toBeTruthy();
-      testedComponent.simulate('reset');
+      fireEvent.click(resetButton);
+
       expect(onChange).toHaveBeenCalledWith({
         ...options,
         secureJsonFields: {
