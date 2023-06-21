@@ -2,7 +2,7 @@
 
 ![Datasource](https://github.com/VolkovLabs/volkovlabs-abc-datasource/raw/main/src/img/datasource.png)
 
-[![Grafana 9](https://img.shields.io/badge/Grafana-9.3.6-orange)](https://www.grafana.com)
+![Grafana 9](https://img.shields.io/badge/Grafana-9.5.2-orange)
 ![CI](https://github.com/volkovlabs/volkovlabs-abc-datasource/workflows/CI/badge.svg)
 [![codecov](https://codecov.io/gh/VolkovLabs/volkovlabs-abc-datasource/branch/main/graph/badge.svg?token=2W9VR0PG5N)](https://codecov.io/gh/VolkovLabs/volkovlabs-abc-datasource)
 [![CodeQL](https://github.com/VolkovLabs/volkovlabs-abc-datasource/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/VolkovLabs/volkovlabs-abc-datasource/actions/workflows/codeql-analysis.yml)
