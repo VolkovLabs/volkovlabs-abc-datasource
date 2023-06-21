@@ -1,6 +1,6 @@
 # Change Log
 
-## 2.3.0 (IN PROGRESS)
+## 2.3.0 (2023-06-20)
 
 ### Features / Enhancements
 
@@ -9,6 +9,7 @@
 - Migrate to Plugin Tools 1.5.2 (#24)
 - Update to Node 18 and npm (#24)
 - Update to Grafana 10.0.0 (#25)
+- Add E2E Cypress testing (#26)
 
 ## 2.2.0 (2023-02-16)
 
