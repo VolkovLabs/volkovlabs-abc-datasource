@@ -49,8 +49,8 @@ npm run start
 
 ## Highlights
 
-- Use `docker-compose` to start the development environment with provisioned panels and a dashboard.
-- Provides unit test configuration.
+- Use `docker-compose` to start the development environment with provisioned data source and a dashboard.
+- Provides unit and E2E test configuration.
 - Based on the latest version of Grafana and Grafana Tools.
 - Includes GitHub Actions for CI, E2E and Release.
 
