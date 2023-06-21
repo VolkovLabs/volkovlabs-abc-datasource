@@ -1,6 +1,7 @@
-import React, { ChangeEvent, PureComponent } from 'react';
+import React, { ChangeEvent, useCallback } from 'react';
 import { DataSourcePluginOptionsEditorProps } from '@grafana/data';
 import { FieldSet, InlineField, InlineFieldRow, Input, LegacyForms } from '@grafana/ui';
+import { TestIds } from '../../constants';
 import { DataSourceOptions, SecureJsonData } from '../../types';
 
 /**
@@ -9,47 +10,45 @@ import { DataSourceOptions, SecureJsonData } from '../../types';
 interface Props extends DataSourcePluginOptionsEditorProps<DataSourceOptions> {}
 
 /**
- * State
- */
-interface State {}
-
-/**
  * Config Editor
  */
-export class ConfigEditor extends PureComponent<Props, State> {
+export const ConfigEditor: React.FC<Props> = ({ options, onOptionsChange }) => {
   /**
    * Path Change
    */
-  onPathChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { onOptionsChange, options } = this.props;
-    onOptionsChange({
-      ...options,
-      jsonData: {
-        ...options.jsonData,
-        path: event.target.value,
-      },
-    });
-  };
+  const onPathChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      onOptionsChange({
+        ...options,
+        jsonData: {
+          ...options.jsonData,
+          path: event.target.value,
+        },
+      });
+    },
+    [onOptionsChange, options]
+  );
 
   /**
    * API Key Change
    * Secure fields only sent to the backend
    */
-  onAPIKeyChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { onOptionsChange, options } = this.props;
-    onOptionsChange({
-      ...options,
-      secureJsonData: {
-        apiKey: event.target.value,
-      },
-    });
-  };
+  const onAPIKeyChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      onOptionsChange({
+        ...options,
+        secureJsonData: {
+          apiKey: event.target.value,
+        },
+      });
+    },
+    [onOptionsChange, options]
+  );
 
   /**
    * API Key Reset
    */
-  onResetAPIKey = () => {
-    const { onOptionsChange, options } = this.props;
+  const onResetAPIKey = useCallback(() => {
     onOptionsChange({
       ...options,
       secureJsonFields: {
@@ -61,36 +60,37 @@ export class ConfigEditor extends PureComponent<Props, State> {
         apiKey: '',
       },
     });
-  };
+  }, [onOptionsChange, options]);
 
-  /**
-   * Render
-   */
-  render() {
-    const { options } = this.props;
-    const { jsonData, secureJsonFields } = options;
-    const secureJsonData = (options.secureJsonData || {}) as SecureJsonData;
+  const { jsonData, secureJsonFields } = options;
+  const secureJsonData = (options.secureJsonData || {}) as SecureJsonData;
 
-    return (
-      <FieldSet>
-        <InlineFieldRow>
-          <InlineField label="Path" labelWidth={14}>
-            <Input type="text" value={jsonData.path} width={40} onChange={this.onPathChange} />
-          </InlineField>
-        </InlineFieldRow>
-
-        <InlineFieldRow>
-          <LegacyForms.SecretFormField
-            isConfigured={(secureJsonFields && secureJsonFields.apiKey) as boolean}
-            value={secureJsonData.apiKey || ''}
-            label="API Key"
-            labelWidth={7}
-            inputWidth={20}
-            onReset={this.onResetAPIKey}
-            onChange={this.onAPIKeyChange}
+  return (
+    <FieldSet data-testid={TestIds.configEditor.root}>
+      <InlineFieldRow>
+        <InlineField label="Path" labelWidth={14}>
+          <Input
+            type="text"
+            value={jsonData.path}
+            width={40}
+            onChange={onPathChange}
+            data-testid={TestIds.configEditor.fieldPath}
           />
-        </InlineFieldRow>
-      </FieldSet>
-    );
-  }
-}
+        </InlineField>
+      </InlineFieldRow>
+
+      <InlineFieldRow>
+        <LegacyForms.SecretFormField
+          isConfigured={(secureJsonFields && secureJsonFields.apiKey) as boolean}
+          value={secureJsonData.apiKey || ''}
+          label="API Key"
+          labelWidth={7}
+          inputWidth={20}
+          onReset={onResetAPIKey}
+          onChange={onAPIKeyChange}
+          data-testid={TestIds.configEditor.fieldApiKey}
+        />
+      </InlineFieldRow>
+    </FieldSet>
+  );
+};

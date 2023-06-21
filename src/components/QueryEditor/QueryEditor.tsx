@@ -1,8 +1,8 @@
 import { defaults } from 'lodash';
-import React, { ChangeEvent, PureComponent } from 'react';
+import React, { ChangeEvent, useCallback } from 'react';
 import { QueryEditorProps } from '@grafana/data';
 import { InlineField, InlineFieldRow, Input } from '@grafana/ui';
-import { defaultQuery } from '../../constants';
+import { DefaultQuery, TestIds } from '../../constants';
 import { DataSource } from '../../datasource';
 import { DataSourceOptions, Query } from '../../types';
 
@@ -14,27 +14,35 @@ type Props = QueryEditorProps<DataSource, Query, DataSourceOptions>;
 /**
  * Query Editor
  */
-export class QueryEditor extends PureComponent<Props> {
+export const QueryEditor: React.FC<Props> = ({ onChange, query }) => {
   /**
    * Query Text change
    */
-  onQueryTextChange = (event: ChangeEvent<HTMLInputElement>) => {
-    const { onChange, query } = this.props;
-    onChange({ ...query, queryText: event.target.value });
-  };
+  const onQueryTextChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      onChange({ ...query, queryText: event.target.value });
+    },
+    [onChange, query]
+  );
+
+  /**
+   * Query with defaults
+   */
+  const finalQuery = defaults(query, DefaultQuery);
 
   /**
    * Render
    */
-  render() {
-    const query = defaults(this.props.query, defaultQuery);
-
-    return (
-      <InlineFieldRow>
-        <InlineField label="Query Text" labelWidth={14} grow>
-          <Input type="text" value={query.queryText} onChange={this.onQueryTextChange} />
-        </InlineField>
-      </InlineFieldRow>
-    );
-  }
-}
+  return (
+    <InlineFieldRow>
+      <InlineField label="Query Text" labelWidth={14} grow>
+        <Input
+          type="text"
+          value={finalQuery.queryText}
+          onChange={onQueryTextChange}
+          data-testid={TestIds.queryEditor.fieldQueryText}
+        />
+      </InlineField>
+    </InlineFieldRow>
+  );
+};

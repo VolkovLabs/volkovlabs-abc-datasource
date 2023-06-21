@@ -5,6 +5,7 @@
 ### Features / Enhancements
 
 - Update CI and Release Workflows to use setup-node cache (#21)
+- Update unit tests with testing-library/react (#23)
 
 ## 2.2.0 (2023-02-16)
 

@@ -1,13 +1,8 @@
-import { shallow, ShallowWrapper } from 'enzyme';
 import React from 'react';
-import { defaultQuery } from '../../constants';
+import { render, screen, fireEvent } from '@testing-library/react';
+import { DefaultQuery, TestIds } from '../../constants';
 import { Query } from '../../types';
 import { QueryEditor } from './QueryEditor';
-
-/**
- * Component
- */
-type ShallowComponent = ShallowWrapper<QueryEditor['props'], QueryEditor['state'], QueryEditor>;
 
 /**
  * Get Query with default values and ability to override
@@ -15,7 +10,7 @@ type ShallowComponent = ShallowWrapper<QueryEditor['props'], QueryEditor['state'
  * @param overrideQuery
  */
 export const getQuery = (overrideQuery = {}): Query => ({
-  queryText: defaultQuery.queryText,
+  queryText: DefaultQuery.queryText,
   refId: 'A',
   ...overrideQuery,
 });
@@ -36,25 +31,25 @@ describe('QueryEditor', () => {
    * Query Text
    */
   describe('QueryText', () => {
-    const getComponent = (wrapper: ShallowComponent) =>
-      wrapper.findWhere((node) => {
-        return node.prop('onChange') === wrapper.instance().onQueryTextChange;
-      });
-
     it('Should apply queryText value and change', () => {
       const query = getQuery();
-      const wrapper = shallow<QueryEditor>(
-        <QueryEditor datasource={[] as any} query={query} onRunQuery={onRunQuery} onChange={onChange} />
-      );
 
-      const testedComponent = getComponent(wrapper);
-      expect(testedComponent.prop('value')).toEqual(defaultQuery.queryText);
+      render(<QueryEditor datasource={[] as any} query={query} onRunQuery={onRunQuery} onChange={onChange} />);
+
+      /**
+       * Check component
+       */
+      const testedComponent = screen.getByTestId(TestIds.queryEditor.fieldQueryText);
+
+      expect(testedComponent).toHaveValue(DefaultQuery.queryText);
 
       /**
        * OnChange
        */
       const newValue = 'new';
-      testedComponent.simulate('change', { target: { value: newValue } });
+
+      fireEvent.change(testedComponent, { target: { value: newValue } });
+
       expect(onChange).toHaveBeenCalledWith({
         ...query,
         queryText: newValue,
