@@ -1,5 +1,16 @@
 # Change Log
 
+## 3.0.0 (2023-06-25)
+
+### Breaking changes
+
+- Requires Grafana 9 and Grafana 10
+
+### Features / Enhancements
+
+- Update E2E Cypress testing (#27)
+- Remove Grafana 8.5 support (#27)
+
 ## 2.3.0 (2023-06-20)
 
 ### Features / Enhancements
