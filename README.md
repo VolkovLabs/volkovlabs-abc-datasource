@@ -59,7 +59,7 @@ npm run start
 ## Support
 
 - Subscribe to our [YouTube Channel](https://www.youtube.com/@volkovlabs) and add a comment.
-- We provide Premium tier support for the development plugins available via [GitHub Sponsor](https://github.com/sponsors/VolkovLabs).
+- Premium tier support for the development plugins is available via [GitHub Sponsor](https://github.com/sponsors/VolkovLabs).
 
 ## License
 
