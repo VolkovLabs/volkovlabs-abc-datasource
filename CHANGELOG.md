@@ -1,5 +1,12 @@
 # Change Log
 
+## 3.1.0 (IN PROGRESS)
+
+### Features / Enhancements
+
+- Update E2E Workflow (#28)
+- Update ESLint configuration (#29)
+
 ## 3.0.0 (2023-06-25)
 
 ### Breaking changes
