@@ -6,7 +6,7 @@
 
 - Update E2E Workflow (#28)
 - Update ESLint configuration (#29)
-- Update to Plugin Tools 2.0.2 (#30)
+- Update to Plugin Tools 2.1.1 (#30)
 - Use Grafana Access Policy to sign plugin (#30)
 - Update to Grafana 10.1.4 (#31)
 
